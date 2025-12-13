@@ -54,7 +54,7 @@ This project demonstrates **full-stack development**, **AI integration**, **data
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/santrupt29/startup-validator.git
 cd ai-startup-validator 
 ```
 
