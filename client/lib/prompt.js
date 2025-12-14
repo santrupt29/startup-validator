@@ -1,3 +1,5 @@
+import "server-only"
+
 export const generatePrompt = (title, description) => `
 You are a ruthless Venture Capital Analyst. Your job is to screen startup ideas critically.
 Analyze the idea below and return a STRICTLY VALID JSON object.
