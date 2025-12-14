@@ -12,6 +12,8 @@ The **AI Startup Idea Validator** is a full-stack MVP built to help founders eva
 - Risk level  
 - Profitability score and justification  
 
+> **Note:** This project was developed as a technical screening assignment to demonstrate full-stack and AI development skills. 
+
 This project demonstrates **full-stack development**, **AI integration**, **database usage**, and **deployment skills** under a 24-hour technical screening scenario.
 
 ---
