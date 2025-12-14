@@ -30,11 +30,10 @@ This project demonstrates **full-stack development**, **AI integration**, **data
 
 ## Tech Stack
 
-- **Frontend:** Next.js, React, Tailwind CSS  
-- **Backend:** Next.js API Routes (Node.js)  
+- **Full App:** Next.js, Tailwind CSS  
 - **Database:** MongoDB (via Mongoose)  
 - **AI:** OpenAI GPT-4o-mini  
-- **Deployment:** Vercel (Frontend), Railway / Render (Backend), Mongo Atlas (Database)  
+- **Deployment:** Vercel 
 
 ---
 
@@ -56,14 +55,12 @@ This project demonstrates **full-stack development**, **AI integration**, **data
 ```bash
 git clone https://github.com/santrupt29/startup-validator.git
 cd ai-startup-validator 
+cd app-root
 ```
 
-2. Install dependencies for client and server:
+2. Install dependencies for the app:
 
 ```bash
-cd client
-npm install
-cd ../server
 npm install
 ```
 
@@ -71,26 +68,17 @@ npm install
 3. Create a .env file in the root folder with the following:
 
 ```bash
-MONGO_URI=<your_mongodb_connection_string>
+MONGODB_URI=<your_mongodb_connection_string>
 OPENAI_API_KEY=<your_openai_api_key>
 ```
 
 
 4. Start development servers:
 
-Frontend:
-
 ```bash
-cd client
 npm run dev
 ```
 
-Backend:
-
-```bash
-cd server
-npm run dev
-```
 
 
 5. Open http://localhost:3000 in your browser.
@@ -160,7 +148,7 @@ Startup Description: ${description}
 
 ## Notes on Architecture and Decisions (Max 300 words)
 
-- **Frontend/Backend Split:** Next.js handles both frontend and API routes for seamless integration and SSR.  
+- **Frontend/Backend:** Next.js handles both frontend and API routes for seamless integration and SSR.  
 - **Database:** MongoDB with Mongoose for flexible schema storage of AI reports.  
 - **AI Integration:** OpenAI GPT-4o-mini generates realistic validation reports. Post-processing ensures clean JSON output.  
 - **Score Control:** Profitability and risk are anchored against typical SaaS/B2B baselines to avoid repetitive outputs.  
@@ -212,3 +200,5 @@ Startup Description: ${description}
 **Expected Output:**
 - Risk Level: Medium
 - Profitability Score: 28
+
+
