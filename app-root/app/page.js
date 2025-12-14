@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { createIdea } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { createIdea } from "@/lib/api";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [title, setTitle] = useState("");
@@ -19,46 +24,49 @@ export default function Home() {
       const idea = await createIdea({ title, description });
       router.push(`/ideas/${idea._id}`);
     } catch (err) {
-      alert("Something went wrong");
+      console.error(err);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-md space-y-4 p-6 border rounded"
-      >
-        <h1 className="text-2xl font-bold text-center">
-          AI Startup Idea Validator
-        </h1>
+    <main className="min-h-screen flex items-center justify-center bg-muted/40 px-4">
+      <Card className="w-full max-w-md shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl">
+            AI Startup Idea Validator
+          </CardTitle>
+        </CardHeader>
 
-        <input
-          className="w-full p-2 border rounded"
-          placeholder="Startup Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              placeholder="Startup Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
 
-        <textarea
-          className="w-full p-2 border rounded"
-          placeholder="Describe your idea..."
-          rows={4}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
+            <Textarea
+              placeholder="Describe your idea..."
+              rows={4}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
 
-        <button
-          disabled={loading}
-          className="w-full bg-black text-white py-2 rounded"
-        >
-          {loading ? "Analyzing..." : "Validate Idea"}
-        </button>
-      </form>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={loading}
+            >
+              {loading ? "Analyzing..." : "Validate Idea"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </main>
   );
 }
