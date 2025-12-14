@@ -5,6 +5,7 @@ import openai from "@/lib/openai";
 import { generatePrompt } from "@/lib/prompt";
 
 const headers = {
+  "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type"
@@ -72,11 +73,20 @@ export async function POST(req) {
 
 
 export async function GET() {
-  await connectDB();
-  const ideas = await Idea.find().sort({ createdAt: -1 });
+  try {
+    await connectDB();
 
-  // return Response.json(ideas);
-  return new Response(JSON.stringify(ideas), {headers});
+    const ideas = await Idea.find().sort({ createdAt: -1 });
+
+    return new Response(JSON.stringify(ideas), { headers });
+  } catch (error) {
+    console.error("GET /ideas error:", error);
+
+    return Response.json(
+      { error: "Failed to fetch ideas" },
+      { status: 500 }
+    );
+  }
 }
 
 
